@@ -8,6 +8,6 @@ package com.mycompany.horender.Controllers;
  *
  * @author aluno
  */
-public class RankingController {
+public class UpgradesController {
     
 }
