@@ -1,4 +1,4 @@
-package com.mycompany.horender.Controllers;
+package com.mycompany.horender.Controller;
 
 public final class ColorPalette {
     public static final String BACKGROUND = "#1E1E1E";

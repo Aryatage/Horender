@@ -5,7 +5,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.mycompany.horender.Controllers.InventoryController"
+      fx:controller="com.mycompany.horender.Controller.InventoryController"
       styleClass="inventory-panel"
       stylesheets="@style.css"
       visible="false"

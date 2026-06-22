@@ -1,8 +1,8 @@
-package com.mycompany.horender.Controllers;
+package com.mycompany.horender.Controller;
 
 import javafx.fxml.FXML;
 
-public class CreditosController {
+public class RankingController {
 
     @FXML
     private void onVoltar() {

@@ -9,13 +9,13 @@ module com.mycompany.horender {
     requires javafx.base;
     
     // Abre pacotes para FXML
-    opens com.mycompany.horender.Controllers to javafx.fxml;
+    opens com.mycompany.horender.Controller to javafx.fxml;
     opens com.mycompany.horender.Factories to javafx.fxml;
     
     // Exporta pacote principal
     exports com.mycompany.horender;
     exports com.mycompany.horender.Components;
-    exports com.mycompany.horender.Controllers;
+    exports com.mycompany.horender.Controller;
     exports com.mycompany.horender.Factories;
     exports com.mycompany.horender.Handlers;
 }

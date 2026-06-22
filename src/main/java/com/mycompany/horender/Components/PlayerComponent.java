@@ -5,6 +5,11 @@
 package com.mycompany.horender.Components;
 
 import com.almasb.fxgl.entity.component.Component;
+import com.almasb.fxgl.dsl.FXGL;
+import javafx.scene.input.KeyCode;
+import View.PlayerView;
+
+import com.almasb.fxgl.entity.component.Component;
 /**
  * 
  *
@@ -12,30 +17,19 @@ import com.almasb.fxgl.entity.component.Component;
  */
 public class PlayerComponent extends Component {
 
-    // Nenhum campo de animação
+
+    // NÃO tenha um campo view aqui!
+
+    // Método para acessar a view quando precisar
+    private PlayerView getView() {
+        return entity.getComponent(PlayerView.class);
+    }
 
     @Override
-    public void onAdded() {
-        // Se precisar da animação, obtenha assim:
-        // AnimationsComponent anim = entity.getComponent(AnimationsComponent.class);
-        // Agora pode usar 'anim' para trocar animações, etc.
+    public void onUpdate(double tpf) {
+        // Exemplo: controlar animação com base no movimento
+      //  PlayerView view = getView();
+       // if (view != null) {
+            // view.playRunAnimation();  // Futuro
+        }
     }
-
-    // Outros métodos futuros
-}
-/*public class PlayerComponent extends Component {
-
-    // O PlayerComponent segura a peça de animação
-    private AnimationsComponent animationsComponent;
-
-    public PlayerComponent(AnimationsComponent animationComponent) {
-        this.animationsComponent = animationComponent;
-    }
-
-    // No futuro, o onUpdate daqui controlará quando trocar de uma animação para outra
-    //@Override
-   // public void onUpdate(double tpf) {
-        // Lógica de estado futura entrará aqui
-    //}
-}
-*/

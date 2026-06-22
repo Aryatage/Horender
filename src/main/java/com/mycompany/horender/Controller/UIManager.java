@@ -1,4 +1,4 @@
-package com.mycompany.horender.Controllers;
+package com.mycompany.horender.Controller;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.mycompany.horender.HorenderApp;
