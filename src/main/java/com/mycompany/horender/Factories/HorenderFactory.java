@@ -20,6 +20,6 @@ public class HorenderFactory implements EntityFactory {
     }
     @Spawns("floor")
     public Entity newFloor (SpawnData data) {
-        return floor.CreateFloor(data);
+        return floor.createFloor(data);
     }
 }
