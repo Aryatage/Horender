@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mycompany.horender.Controllers.InventoryController"
+      styleClass="inventory-panel"
+      stylesheets="@style.css"
+      visible="false"
+      maxWidth="400" maxHeight="500"
+      alignment="TOP_CENTER">
+      
+    <Label text="Inventário"
+           styleClass="inventory-title"/>
+           
+    <GridPane styleClass="inventory-grid">
+        <!-- Linha 0 -->
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+        
+        <!-- Linha 1 -->
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+        
+        <!-- Linha 2 -->
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+        
+        <!-- Linha 3 -->
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+        <Label text="[ ]" styleClass="inventory-slot" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+    </GridPane>
+</VBox>

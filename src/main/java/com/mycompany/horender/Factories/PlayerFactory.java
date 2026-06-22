@@ -15,6 +15,23 @@ import static com.mycompany.horender.EntitiesType.PLAYER;
 public class PlayerFactory {
 
     public Entity createPlayer(SpawnData data) {
+        // 1. Cria a animação
+        AnimationsComponent animComp = new AnimationsComponent();
+
+        // 2. Cria o componente do jogador (sem parâmetros)
+        PlayerComponent playerComp = new PlayerComponent();
+
+        // 3. Constrói a entidade com ambos
+        return FXGL.entityBuilder(data)
+                .type(PLAYER)
+                .with(animComp)
+                .with(playerComp)
+                .build();
+    }
+}
+/*public class PlayerFactory {
+
+    public Entity createPlayer(SpawnData data) {
         // 1. Criamos a peça de animação
         AnimationsComponent animComp = new AnimationsComponent();
         
@@ -31,3 +48,4 @@ public class PlayerFactory {
         return player;
     }
 }
+*/

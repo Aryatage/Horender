@@ -1,15 +1,15 @@
 package com.mycompany.horender;
-/**
- * JavaFX HorenderApp
- */
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
+import com.mycompany.horender.Controllers.UIManager;
+import com.mycompany.horender.Factories.HorenderFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
 
-public class HorenderApp extends GameApplication{
+public class HorenderApp extends GameApplication {
+
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setWidth(1280);
@@ -20,9 +20,13 @@ public class HorenderApp extends GameApplication{
 
     @Override
     protected void initGame() {
-        // Carrega a fonte Impact para uso em toda a aplicação
-        Font.loadFont(getClass().getResourceAsStream("/fonts/Impact.ttf"), 72);
-    }
+        // Registra a fábrica que sabe criar "player" e "floor"
+   // FXGL.getGameWorld().addEntityFactory(new HorenderFactory());
+       FXGL.getGameWorld().addEntityFactory(new HorenderFactory());
+    // Spawna o player na posição (300, 300) – ajuste conforme necessário
+   // FXGL.spawn("player", 300, 300);
+      FXGL.spawn("player", 300, 200);
+}
 
     @Override
     protected void initUI() {
@@ -32,8 +36,7 @@ public class HorenderApp extends GameApplication{
 
     @Override
     protected void initInput() {
-        FXGL.onKey(KeyCode.I, () -> {
-            // Ativa/desativa inventário apenas durante o gameplay
+        FXGL.onKeyDown(KeyCode.I, () -> {
             if (UIManager.isGameplayActive()) {
                 UIManager.toggleInventory();
             }

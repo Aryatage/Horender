@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.mycompany.horender.Controllers.UpgradesController"
+           styleClass="upgrades-root"
+           stylesheets="@style.css">
+    <VBox alignment="CENTER" spacing="20" styleClass="upgrades-content">
+        <Label text="Upgrades"
+               styleClass="title"/>
+        <Label text="Disponível após a morte do jogador"
+               styleClass="text-body"/>
+    </VBox>
+</StackPane>
