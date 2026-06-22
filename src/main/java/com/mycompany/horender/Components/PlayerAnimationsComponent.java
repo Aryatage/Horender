@@ -8,22 +8,26 @@ import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.scene.image.Image; // Import correto da Image do JavaFX
 import javafx.util.Duration;
+import com.almasb.fxgl.dsl.FXGL;
 /**
  *
  * @author Priscila
  */
-import com.almasb.fxgl.dsl.FXGL;
+
 public class PlayerAnimationsComponent extends Component {
    private AnimationChannel animIDLE;
 
     public PlayerAnimationsComponent() {
         
-        
-        // e define que a animação inteira dura 1 segundo.
-        //Carrega a imagem usando o gerenciador de assets do FXGL
-        Image IDLE = FXGL.image("IDLE.png");
+     Image IDLE = FXGL.image("IDLE.png");
+    System.out.println("Carregando sprite: " + IDLE.getWidth() + "x" + IDLE.getHeight());
+    animIDLE = new AnimationChannel(IDLE, 7, 384, 336, Duration.seconds(1.5), 0, 6);
+         // No PlayerAnimationsComponent
+java.net.URL url = getClass().getResource("/assets/textures/IDLE.png");
+System.out.println("URL do recurso: " + url);
         // Carrega 'IDLE.png', que tem 7 frames dispostos horizontalmente, por segundo.
-        animIDLE = new AnimationChannel(IDLE, 7, 384, 336, Duration.seconds(1.5), 0, 6);
+       // animIDLE = new AnimationChannel(IDLE, 7, 384, 336, Duration.seconds(1.5), 0, 6);
+        
     }
 
     public AnimationChannel getAnimIDLE() {
