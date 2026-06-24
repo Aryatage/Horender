@@ -3,7 +3,8 @@ package com.mycompany.horender;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
-import com.mycompany.horender.Controller.UIManager;
+import com.mycompany.horender.Components.PlayerMovementComponent;
+import com.mycompany.horender.Controllers.UIManager;
 import com.mycompany.horender.Factories.HorenderFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
@@ -39,10 +40,9 @@ public class HorenderApp extends GameApplication {
         FXGL.onKeyDown(KeyCode.I, () -> {
             if (UIManager.isGameplayActive()) {
                 UIManager.toggleInventory();
-            }
-        });
+            }});
     }
-
+        
     public static void main(String[] args) {
         launch(args);
     }

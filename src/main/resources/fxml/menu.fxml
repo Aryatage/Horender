@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane styleClass="menu-root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.horender.Controller.MenuController">
+<StackPane styleClass="menu-root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.horender.Controllers.MenuController">
 
     <!-- Placeholder para arte de fundo em pixel art
     <ImageView fx:id="backgroundImage"

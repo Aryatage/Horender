@@ -1,4 +1,4 @@
-package com.mycompany.horender.Controller;
+package com.mycompany.horender.Controllers;
 
 public class InventoryController {
 

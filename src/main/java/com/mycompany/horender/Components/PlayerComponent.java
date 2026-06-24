@@ -7,7 +7,7 @@ package com.mycompany.horender.Components;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.dsl.FXGL;
 import javafx.scene.input.KeyCode;
-import View.PlayerView;
+import com.mycompany.horender.Views.PlayerView;
 
 import com.almasb.fxgl.entity.component.Component;
 /**
