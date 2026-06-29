@@ -9,5 +9,5 @@ package com.mycompany.horender;
  * @author Priscila
  */
 public enum EntitiesType {
-    PLAYER, FLOOR
+    PLAYER, FLOOR, MONSTER01
 }

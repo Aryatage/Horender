@@ -14,43 +14,53 @@ public class PlayerView extends Component {
     private AnimatedTexture texture;
     private AnimationChannel animIDLE;
     private AnimationChannel animWALK;
+    private AnimationChannel animATTACK;
+    private boolean isFlipped = false;
+    private String currentAnim = "idle";
+    private int frameCount = 0; // apenas para debug de onUpdate
 
     public PlayerView() {
         try {
-            // Carrega spritesheets
             Image idleSheet = loadImage("/assets/textures/IDLE.png");
             Image walkSheet = loadImage("/assets/textures/WALK.png");
 
-            // Cria canais de animação
-            // IDLE: 7 frames, tamanho 384x336, duração 1.5s
             animIDLE = new AnimationChannel(idleSheet, 7, 384, 336, Duration.seconds(1.5), 0, 6);
-            // WALK: 8 frames (exemplo), tamanho 384x336, duração 0.8s
             animWALK = new AnimationChannel(walkSheet, 8, 384, 336, Duration.seconds(0.8), 0, 7);
 
-            // Inicializa com idle
+            // Fallback seguro para ataque
+            Image attackSheet;
+            try {
+                attackSheet = loadImage("/assets/textures/ATTACK.png");
+            } catch (RuntimeException e) {
+                System.err.println("AVISO: ATTACK.png não encontrado. Usando WALK.png como placeholder.");
+                attackSheet = walkSheet;
+            }
+            // Configuração para 6 frames
+            animATTACK = new AnimationChannel(attackSheet, 6, 384, 336, Duration.seconds(1.0), 0, 5);
+
+            // Debug inicial (apenas dimensões, sem getFrames)
+            System.out.println("=== DEBUG PlayerView ===");
+            System.out.println("IDLE sheet: " + idleSheet.getWidth() + "x" + idleSheet.getHeight());
+            System.out.println("WALK sheet: " + walkSheet.getWidth() + "x" + walkSheet.getHeight());
+            System.out.println("ATTACK sheet: " + attackSheet.getWidth() + "x" + attackSheet.getHeight());
+
             texture = new AnimatedTexture(animIDLE);
             texture.setSmooth(false);
             texture.loop();
+            System.out.println("Texture inicial hashCode: " + texture.hashCode());
 
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Falha ao carregar animações do player", e);
+            throw new RuntimeException("Falha ao carregar animações", e);
         }
     }
 
     private Image loadImage(String path) {
         try (InputStream is = getClass().getResourceAsStream(path)) {
-            if (is == null) {
-                throw new IOException("Arquivo não encontrado: " + path);
-            }
+            if (is == null) throw new IOException("Arquivo não encontrado: " + path);
             return new Image(is);
         } catch (IOException e) {
-            // Fallback usando FXGL (se o classloader falhar)
-            try {
-                return com.almasb.fxgl.dsl.FXGL.image(path.replace("/assets/", ""));
-            } catch (Exception ex) {
-                throw new RuntimeException("Falha ao carregar imagem: " + path, e);
-            }
+            throw new RuntimeException("Falha ao carregar imagem: " + path, e);
         }
     }
 
@@ -61,41 +71,54 @@ public class PlayerView extends Component {
 
     @Override
     public void onUpdate(double tpf) {
+        frameCount++;
+        if (frameCount % 60 == 0) {
+            System.out.println("onUpdate frame=" + frameCount +
+                " texture=" + texture.hashCode() +
+                " currentAnim=" + currentAnim +
+                " isFlipped=" + isFlipped);
+        }
         texture.onUpdate(tpf);
     }
 
-    /**
-     * Troca para a animação idle.
-     */
     public void playIdle() {
-        playAnimation(animIDLE);
-    }
-
-    /**
-     * Troca para a animação walk.
-     */
-    public void playWalk() {
-        playAnimation(animWALK);
-    }
-
-    /**
-     * Espelha o sprite horizontalmente.
-     * @param flipped true = virado para esquerda, false = direita
-     */
-    public void setFlipped(boolean flipped) {
-        if (texture != null) {
-            texture.setScaleX(flipped ? -1.0 : 1.0);
+        if (!currentAnim.equals("idle")) {
+            currentAnim = "idle";
+            playAnimation(animIDLE, true);
         }
     }
 
-    // Método interno para troca de animação
-    private void playAnimation(AnimationChannel channel) {
+    public void playWalk() {
+        if (!currentAnim.equals("walk")) {
+            currentAnim = "walk";
+            playAnimation(animWALK, true);
+        }
+    }
+
+    public void playAttack() {
+        currentAnim = "attack";
+        playAnimation(animATTACK, false);   // <-- true em vez de false
+        }
+
+    public void setFlipped(boolean flipped) {
+        this.isFlipped = flipped;
+        if (texture != null) texture.setScaleX(flipped ? -1.0 : 1.0);
+    }
+
+    private void playAnimation(AnimationChannel channel, boolean loop) {
+        System.out.println("playAnimation() loop=" + loop + " isFlipped=" + isFlipped);
         if (texture != null) {
+            System.out.println("  removendo textura anterior: " + texture.hashCode());
             texture.stop();
             entity.getViewComponent().removeChild(texture);
         }
         texture = new AnimatedTexture(channel);
-        texture.loop();
+        System.out.println("  nova textura hashCode: " + texture.hashCode());
+        if (loop) {
+            texture.loop();
+        }
+        texture.setScaleX(isFlipped ? -1.0 : 1.0);
         entity.getViewComponent().addChild(texture);
+        System.out.println("  textura adicionada, parent: " + texture.getParent());
     }
 }

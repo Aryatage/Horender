@@ -9,17 +9,16 @@ import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 
 public class HorenderFactory implements EntityFactory {
-
-    private final PlayerFactory playerFactory = new PlayerFactory();
-    private final FloorFactory floor = new FloorFactory();
     
+    private final PlayerFactory playerFactory = new PlayerFactory();
+    private final MonsterFactory monsterFactory = new MonsterFactory();
+
     @Spawns("player")
-    public Entity newPlayer(SpawnData data) {
-        // Delega a criação para a sub-fábrica especialista
-        return playerFactory.createPlayer(data);
-    }
-    @Spawns("floor")
-    public Entity newFloor (SpawnData data) {
-        return floor.createFloor(data);
-    }
+    public Entity newPlayer(SpawnData data) { return playerFactory.createPlayer(data); }
+    @Spawns("monster01")
+    public Entity newMonster(SpawnData data) { return monsterFactory.createMonster(data); }
+    @Spawns("coin")
+    public Entity newCoin(SpawnData data) {
+    return new CoinFactory().createCoin(data);
+}
 }

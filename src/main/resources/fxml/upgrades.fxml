@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="com.mycompany.horender.Controllers.UpgradesController"
-           styleClass="upgrades-root"
-           stylesheets="@style.css">
-    <VBox alignment="CENTER" spacing="20" styleClass="upgrades-content">
-        <Label text="Upgrades"
-               styleClass="title"/>
-        <Label text="Disponível após a morte do jogador"
-               styleClass="text-body"/>
+           style="-fx-background-color: #1E1E1E;">
+    <VBox alignment="CENTER" spacing="15">
+        <Label text="Deathscape"
+               style="-fx-font-family: 'Impact'; -fx-font-size: 40; -fx-text-fill: #DC143C;"/>
+        <Label fx:id="coinLabel" text="Moedas: 0"
+               style="-fx-font-size: 20; -fx-text-fill: white;"/>
+
+        <!-- Upgrade Buttons (exemplo) -->
+        <Button fx:id="btnDamage" text="Ataque Brutal (5 moedas)"
+                onAction="#onBuyDamage"/>
+        <Label fx:id="damageStatus" style="-fx-font-size: 14; -fx-text-fill: gray;"/>
+
+        <Button fx:id="btnInvisibility" text="Sombra Furtiva (10 moedas)"
+                onAction="#onBuyInvisibility"/>
+        <Label fx:id="invisibilityStatus" style="-fx-font-size: 14; -fx-text-fill: gray;"/>
+
+        <Button fx:id="btnMonster" text="Caos Bestial (8 moedas)"
+                onAction="#onBuyMonster"/>
+        <Label fx:id="monsterStatus" style="-fx-font-size: 14; -fx-text-fill: gray;"/>
+
+        <Button fx:id="btnHealth" text="Vigor Superior (5 moedas)"
+                onAction="#onBuyHealth"/>
+        <Label fx:id="healthStatus" style="-fx-font-size: 14; -fx-text-fill: gray;"/>
+
+        <Button text="Recomeçar" onAction="#onRestart"
+                style="-fx-background-color: #2A2A2A; -fx-text-fill: #C0C0C0; -fx-font-size: 18;"/>
     </VBox>
 </StackPane>
